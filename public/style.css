@@ -305,7 +305,6 @@ td.empty {
     padding-bottom: 76px;
   }
 }
-
 :focus-visible {
   outline: 3px solid var(--green-500);
   outline-offset: 2px;

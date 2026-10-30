@@ -9,7 +9,6 @@ function initChart() {
     g.addColorStop(1, color + "00");
     return g;
   };
-
   chart = new Chart(ctx, {
     type: "line",
     data: {
