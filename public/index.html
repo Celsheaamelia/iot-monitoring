@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greenhouse IoT Monitoring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"
+              />
+              <path d="M2 21c0-3 1.9-5.4 5.1-6.4C9.2 13.9 11 13 12 11" />
+            </svg>
+          </div>
+          <div>
+            <h1>Greenhouse Monitor</h1>
+            <p>Pantauan suhu dan kelembapan secara langsung</p>
+          </div>
+        </div>
+        <div class="status-bar">
+          <span class="status-label">Perangkat</span>
+          <span id="status-perangkat" class="badge">Offline</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card-grid">
+        <article id="card-suhu" class="card card-suhu">
+          <div class="card-head">
+            <h3>Suhu terkini</h3>
+            <span id="status-suhu" class="pill">--</span>
+          </div>
+          <p class="value"><span id="val-suhu">--</span><small>°C</small></p>
+          <p class="updated">Diperbarui <span id="time-suhu">--</span></p>
+        </article>
+
+        <article class="card card-lembap">
+          <div class="card-head">
+            <h3>Kelembapan terkini</h3>
+          </div>
+          <p class="value">
+            <span id="val-kelembapan">--</span><small>%</small>
+          </p>
+          <div class="meter" aria-hidden="true">
+            <div id="bar-kelembapan" class="meter-fill"></div>
+          </div>
+          <p class="updated">Diperbarui <span id="time-kelembapan">--</span></p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Grafik 20 data terakhir</h2>
+        </div>
+        <div class="chart-container">
+          <canvas id="sensorChart"></canvas>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Riwayat 10 data terakhir</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Perangkat</th>
+                <th>Suhu (°C)</th>
+                <th>Kelembapan (%)</th>
+                <th>Waktu</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <td colspan="5" class="empty">Memuat data...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
